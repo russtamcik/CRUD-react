@@ -5,24 +5,32 @@ import { useState } from "react";
 import PropTypes from "prop-types";
 
 import videoBg from "../assets/videoBg.mp4";
+import { toast } from "react-toastify";
 
 const LoginPage = ({ setIsAuth }) => {
-  const [user, setUser] = useState({ username: "rustam", password: "2005" });
+  const [user, setUser] = useState({ username: "", password: "" });
   const navigate = useNavigate();
-  const login = () => {
-    navigate("/home");
-    setIsAuth(true);
-    localStorage.setItem("isAuth", true);
-  };
   const handleUser = (e) => {
     setUser({ ...user, [e.target.id]: e.target.value });
+  };
+
+  const submit = (e) => {
+    e.preventDefault();
+    if (user.username === "rustam" && user.password === "2005") {
+      navigate("/");
+    } else {
+      toast.error("Error");
+    }
+    navigate("/");
+    setIsAuth(true);
+    localStorage.setItem("isAuth", true);
   };
   return (
     <div className="vh-100 d-flex justify-content-center align-items-center">
       <div className="main">
         <video src={videoBg} autoPlay loop muted />
       </div>
-      <Form className="form-bg" onSubmit={login}>
+      <Form className="form-bg" onSubmit={submit}>
         <Form.Group controlId="username">
           <Form.Label>User name</Form.Label>
           <Form.Control
@@ -45,7 +53,7 @@ const LoginPage = ({ setIsAuth }) => {
           />
           <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
         </Form.Group>
-        <Button className="mt-3" type="submit" onClick={login}>
+        <Button className="mt-3" type="submit">
           Submit Form
         </Button>
         <div className="log">

@@ -11,7 +11,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route
-          path="/home"
+          path="/"
           element={isAuth ? <HomePage /> : <Navigate to="/login" />}
         />
         <Route path="/login" element={<LoginPage setIsAuth={setIsAuth} />} />
