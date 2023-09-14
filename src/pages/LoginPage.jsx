@@ -7,7 +7,7 @@ import PropTypes from "prop-types";
 import videoBg from "../assets/videoBg.mp4";
 
 const LoginPage = ({ setIsAuth }) => {
-  const [user, setUser] = useState({ username: "", password: "" });
+  const [user, setUser] = useState({ username: "rustam", password: "2005" });
   const navigate = useNavigate();
   const login = () => {
     navigate("/home");

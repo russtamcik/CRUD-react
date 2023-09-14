@@ -1,10 +1,8 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { useState } from "react";
+
 import HomePage from "./pages/HomePage ";
 import LoginPage from "./pages/LoginPage";
-
-// import HomePage from "./pages/HomePage";
-// import LoginPage from "./pages/LoginPage";
 
 function App() {
   const isAuthLocal = Boolean(localStorage.getItem("isAuth"));
